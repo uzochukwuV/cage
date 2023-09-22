@@ -4,4 +4,4 @@ Scripts
 Lib
 vite-project
 *.env
-*.sqlite3
+
