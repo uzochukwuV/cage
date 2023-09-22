@@ -12,8 +12,7 @@ https://docs.djangoproject.com/en/3.2/ref/settings/
 
 from pathlib import Path
 import os
-import dj_database_url
-from decouple import config
+
 
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
@@ -24,7 +23,7 @@ DEBUG = True
 # See https://docs.djangoproject.com/en/3.2/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'django-insecure-zz59i9bgop6i^xmu%i(ar9eitl!xrj8tzf#o2nu1e362olbdy-'
+SECRET_KEY = 'django-insecure-zz59i9bgop6i^xmui(ar9eitl!xrj8tzf#o2nu1e362olbdy-'
 
 # SECURITY WARNING: don't run with debug turned on in production!
 
@@ -41,37 +40,17 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'rest_framework',
-    'rest_framework.authtoken',
     
-    'rest_auth',
-    'django.contrib.sites',
-    'allauth',
-    'allauth.account',
-    'allauth.socialaccount',
-    'rest_auth.registration',
-    'corsheaders',
     'modapp',
 ]
 SITE_ID =1
 
-ACCOUNT_USER_MODEL_USERNAME_FIELD = None
-ACCOUNT_EMAIL_REQUIRED = True
-ACCOUNT_USERNAME_REQUIRED = False
-ACCOUNT_AUTHENTICATION_METHOD = 'email'
-AUTHENTICATION_METHOD = 'email'
 
 
-REST_AUTH_SERIALIZERS = {
-    "LOGIN_SERIALIZER": "modapp.serializers.CustomLoginSerializer",
-}
 
-REST_AUTH_REGISTER_SERIALIZERS = {
-    "REGISTER_SERIALIZER": "modapp.serializers.CustomRegisterSerializer",
-}
 
 MIDDLEWARE = [
-    "corsheaders.middleware.CorsMiddleware",
+    
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
@@ -80,24 +59,15 @@ MIDDLEWARE = [
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
-CORS_ALLOW_ALL_ORIGINS =True
+
 ROOT_URLCONF = 'djanrest.urls'
 
 
-AUTHENTICATION_BACKENDS = [
-    
-    # Needed to login by username in Django admin, regardless of `allauth`
-    'django.contrib.auth.backends.ModelBackend',
-
-    # `allauth` specific authentication methods, such as login by e-mail
-    'allauth.account.auth_backends.AuthenticationBackend',
-    
-]
 
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [BASE_DIR, "/templates"],
+        'DIRS': [BASE_DIR, "templates"],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -123,9 +93,9 @@ DATABASES = {
     }
 }
 
-DATABASES['default'] = dj_database_url.config()
 
-AUTH_USER_MODEL = 'modapp.MyUser'
+
+# nage
 # Password validation
 # https://docs.djangoproject.com/en/3.2/ref/settings/#auth-password-validators
 
@@ -170,12 +140,3 @@ STATIC_ROOT = BASE_DIR/ "staticfiles_build"/ "static"
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
-SHELL_PLUS = "ipython"
-
-EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
-EMAIL_HOST = 'smtp.gmail.com'
-EMAIL_USE_TLS = True
-EMAIL_USE_SSL= False
-EMAIL_PORT = 587
-EMAIL_HOST_USER = 'vic.ezealor@gmail.com'
-EMAIL_HOST_PASSWORD = 'yiqmnmwmtnhtliqr'
